@@ -1,0 +1,100 @@
+export default [
+  {
+    _id: "RS101",
+    name: "Rocket Propulsion",
+    number: "RS4550",
+    startDate: "2023-01-10",
+    endDate: "2023-05-15",
+    department: "D123",
+    credits: 4,
+    description:
+      "This course provides an in-depth study of the fundamentals of rocket propulsion, covering propulsion theory, engine types, and practical applications.",
+    image: "/images/rocket.jpeg",
+  },
+  {
+    _id: "RS102",
+    name: "Aerodynamics",
+    number: "RS4560",
+    startDate: "2023-01-10",
+    endDate: "2023-05-15",
+    department: "D123",
+    credits: 3,
+    description:
+      "This course offers a comprehensive exploration of aerodynamics, focusing on airflow behaviors, airfoil design, and aerodynamic forces.",
+    image: "/images/aero.jpeg",
+  },
+  {
+    _id: "RS103",
+    name: "Spacecraft Design",
+    number: "RS4570",
+    startDate: "2023-01-10",
+    endDate: "2023-05-15",
+    department: "D123",
+    credits: 4,
+    description:
+      "This course covers spacecraft design principles, including propulsion, power systems, structures, and payload integration.",
+    image: "/images/space.jpeg",
+  },
+  {
+    _id: "RS104",
+    name: "Organic Chemistry",
+    number: "CH1230",
+    startDate: "2023-01-10",
+    endDate: "2023-05-15",
+    department: "D134",
+    credits: 3,
+    description:
+      "An in-depth study of organic compounds, functional groups, stereochemistry, and synthesis.",
+    image: "/images/chem.jpeg",
+  },
+  {
+    _id: "RS105",
+    name: "Inorganic Chemistry",
+    number: "CH1240",
+    startDate: "2023-01-10",
+    endDate: "2023-05-15",
+    department: "D134",
+    credits: 3,
+    description:
+      "Coordination chemistry, metal complexes, bonding theories, and real-world inorganic applications.",
+    image: "/images/inorg.jpeg",
+  },
+  {
+    _id: "RS106",
+    name: "Physical Chemistry",
+    number: "CH1250",
+    startDate: "2023-01-10",
+    endDate: "2023-05-15",
+    department: "D134",
+    credits: 3,
+    description:
+      "Thermodynamics, kinetics, quantum chemistry, and spectroscopy.",
+    image: "/images/physical.jpeg",
+  },
+  {
+    _id: "RS107",
+    name: "Ancient Languages and Scripts of Middle-earth",
+    number: "ME101",
+    startDate: "2023-01-10",
+    endDate: "2023-05-15",
+    department: "Languages",
+    credits: 3,
+    description:
+      "Study of Elvish, Dwarvish, Black Speech, and Tengwar scripts.",
+    author: "654f9ec2ea7ead465908d1e3",
+    image: "/images/lang.jpeg",
+  },
+  {
+    _id: "RS108",
+    name: "Wizards, Elves, and Men: Inter-species Diplomacy in Middle-earth",
+    number: "ME102",
+    startDate: "2023-01-10",
+    endDate: "2023-05-15",
+    department: "Political Studies",
+    credits: 4,
+    description:
+      "Diplomacy, alliances, conflicts, and leadership across races of Middle-earth.",
+    author: "654f9ec2ea7ead465908d1e3",
+    image: "/images/anci.jpeg",
+  }
+];
