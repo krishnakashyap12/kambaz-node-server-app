@@ -7,6 +7,10 @@ export function findAllCourses() {
 
 export function createCourse(course) {
   delete course._id; // MongoDB will generate _id
+  // Set default image if not provided
+  if (!course.image) {
+    course.image = "/images/reactjs.jpg";
+  }
   const newCourse = { ...course, _id: uuidv4() };
   return model.create(newCourse);
 }
