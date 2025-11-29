@@ -4,8 +4,8 @@ export default function ModuleRoutes(app) {
   const deleteModule = async (req, res) => {
     try {
       const { moduleId } = req.params;
-      modulesDao.deleteModule(moduleId);
-      res.sendStatus(204);
+      const status = await modulesDao.deleteModule(moduleId);
+      res.json(status);
     } catch (error) {
       res.status(404).json({ message: error.message });
     }
@@ -15,10 +15,17 @@ export default function ModuleRoutes(app) {
     try {
       const { moduleId } = req.params;
       const moduleUpdates = req.body;
-      const status = modulesDao.updateModule(moduleId, moduleUpdates);
-      res.json(status);
+      // Remove _id and editing from updates (these shouldn't be updated)
+      const { _id, editing, ...updates } = moduleUpdates;
+      const updatedModule = await modulesDao.updateModule(moduleId, updates);
+      if (!updatedModule) {
+        res.status(404).json({ message: `Module with ID ${moduleId} not found` });
+        return;
+      }
+      res.json(updatedModule);
     } catch (error) {
-      res.status(404).json({ message: error.message });
+      console.error("Error updating module:", error);
+      res.status(500).json({ message: error.message });
     }
   };
 

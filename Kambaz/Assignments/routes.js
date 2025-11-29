@@ -2,10 +2,10 @@ import * as assignmentsDao from "./dao.js";
 
 export default function AssignmentRoutes(app) {
   // Get assignment by ID
-  app.get("/api/assignments/:assignmentId", (req, res) => {
+  app.get("/api/assignments/:assignmentId", async (req, res) => {
     try {
       const { assignmentId } = req.params;
-      const assignment = assignmentsDao.findAssignmentById(assignmentId);
+      const assignment = await assignmentsDao.findAssignmentById(assignmentId);
       
       if (!assignment) {
         res.status(404).json({ message: `Assignment with ID ${assignmentId} not found` });
@@ -19,22 +19,29 @@ export default function AssignmentRoutes(app) {
   });
 
   // Update assignment
-  app.put("/api/assignments/:assignmentId", (req, res) => {
+  app.put("/api/assignments/:assignmentId", async (req, res) => {
     try {
       const { assignmentId } = req.params;
       const assignmentUpdates = req.body;
-      const status = assignmentsDao.updateAssignment(assignmentId, assignmentUpdates);
-      res.json(status);
+      console.log("Updating assignment:", assignmentId, "with data:", assignmentUpdates);
+      const updatedAssignment = await assignmentsDao.updateAssignment(assignmentId, assignmentUpdates);
+      if (!updatedAssignment) {
+        res.status(404).json({ message: `Assignment with ID ${assignmentId} not found` });
+        return;
+      }
+      console.log("Assignment updated successfully:", updatedAssignment);
+      res.json(updatedAssignment);
     } catch (error) {
-      res.status(404).json({ message: error.message });
+      console.error("Error updating assignment:", error);
+      res.status(500).json({ message: error.message });
     }
   });
 
   // Delete assignment
-  app.delete("/api/assignments/:assignmentId", (req, res) => {
+  app.delete("/api/assignments/:assignmentId", async (req, res) => {
     try {
       const { assignmentId } = req.params;
-      assignmentsDao.deleteAssignment(assignmentId);
+      await assignmentsDao.deleteAssignment(assignmentId);
       res.sendStatus(204);
     } catch (error) {
       res.status(404).json({ message: error.message });
